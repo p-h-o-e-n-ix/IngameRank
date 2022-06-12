@@ -344,8 +344,30 @@ Vector2 IngameRank::rankFromMMR(float mmr, int playlist) {
 	int rank = 1;
 	float subtrahend = 155.0f;
 	if (playlist != 0) subtrahend = 175.0f;
-	temp -= subtrahend;
-	while (temp >= 0 && rank < 22) {
+	//temp -= subtrahend;
+	if(temp <= 154) return Vector2(0, 1); //if i did this correctly, that is bronze 1
+	if(temp <= 214) return Vector2(1, 1);
+	if(temp <= 274) return Vector2(2, 1);
+	if(temp <= 334) return Vector2(3, 1); //silver 1
+	if(temp <= 394) return Vector2(4, 1);
+	if(temp <= 454) return Vector2(5, 1);
+	if(temp <= 514) return Vector2(6, 1); //gold 1
+	if(temp <= 574) return Vector2(7, 1);
+	if(temp <= 634) return Vector2(8, 1);
+	if(temp <= 693) return Vector2(9, 1); //plat 1
+	if(temp <= 745) return Vector2(10, 1);
+	if(temp <= 807) return Vector2(11, 1);
+	if(temp <= 864) return Vector2(12, 1); //dia 1
+	if(temp <= 922) return Vector2(13, 1);
+	if(temp <= 985) return Vector2(14, 1);
+	if(temp <= 1044) return Vector2(15, 1); //champ 1
+	if(temp <= 1104) return Vector2(16, 1);
+	if(temp <= 1165) return Vector2(17, 1);
+	if(temp <= 1226) return Vector2(18, 1); //gc 1
+	if(temp <= 1291) return Vector2(19, 1);
+	if(temp <= 1354) return Vector2(20, 1);
+	if(temp > 1354) return Vector2(21, 1); //ssl
+	/*while (temp >= 0 && rank < 22) {
 		subtrahend = 60.0f;
 		rank += 1;
 		if (playlist != 0) {
@@ -355,7 +377,7 @@ Vector2 IngameRank::rankFromMMR(float mmr, int playlist) {
 			if (rank >= 20) subtrahend = 160.0f;
 		}
 		temp -= subtrahend;
-	}
+	}*/
 	if (rank == 22) return Vector2{ 22, 0 };
 	temp += subtrahend;
 	subtrahend += 15;
